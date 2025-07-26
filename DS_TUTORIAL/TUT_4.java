@@ -29,5 +29,4 @@ public class TUT_4 {
         str2.reverse();
         System.out.println("Reversed string using StringBuffer reverse() method = "+str2);  // using StringBuffer
     }
-    
 }

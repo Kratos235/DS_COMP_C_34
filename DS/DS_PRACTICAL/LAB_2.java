@@ -1,8 +1,6 @@
 import java.util.Scanner;
-
 public class LAB_2 {
-
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         System.out.println("Enter the size of the stack:");
         Scanner sc = new Scanner(System.in);
         int size = sc.nextInt();
