@@ -1,56 +1,69 @@
 import java.util.Scanner;
 
 public class LAB_2 {
+
     public static void main(String[] args) {
+        System.out.println("Enter the size of the stack:");
         Scanner sc = new Scanner(System.in);
-        System.out.println("enter size of array: ");
         int size = sc.nextInt();
-        Holiday[] holidays = createHolidayArray(size);
-        printHolidayArray(holidays);
-        Holiday h1 = new Holiday();
-        Holiday h2 = new Holiday();
-        h1.name = "Republic Day";
-        System.out.println("are h1 and h2 in same month? " + inSameMonth(h1, h2));
-        h2.checkSpecialMonth();
-        int i=0;
-        holidays[0].month = "January";
-        holidays[size-2].month = "December";
-        do {
-            if(holidays[i].month.equals("January")) {
-                i++;
-                continue;
+        MyStack stack = new MyStack(size);
+
+        while(true) {
+            System.out.println("Enter your Choice:");
+            System.out.println("1. Push  2. Pop  3. Print Stack  4. Get Top Element  5. Get Top Index  6. Check if Full  7. Check if Empty  8. Exit");
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            switch(choice) {
+                case 1:
+                    System.out.println("enter string to push:");
+                    String str = sc.nextLine();
+                    stack.push(str);
+                    break;
+                case 2:
+                    stack.pop();
+                    break;
+                case 3:
+                    stack.printStack();
+                    break;
+                case 4:
+                    String topElement = stack.getTopElement();
+                    if(topElement == null) {
+                        System.out.println("Stack is Empty!!");
+                    } else {
+                        System.out.println("Top element: "+topElement);
+                    }
+                    break;
+                case 5:
+                    int topIndex = stack.getTopIndex();
+                    if(topIndex == -1) {
+                        System.out.println("Stack is Empty!!");
+                    } else {
+                        System.out.println("Top index: " + topIndex);
+                    }
+                    break;
+                case 6:
+                    if(stack.isFull()) {
+                        System.out.println("Stack is Full!!");
+                    } else {
+                        System.out.println("Stack is not Full!!");
+                    }
+                    break;
+                case 7:
+                    if(stack.isEmpty()) {
+                        System.out.println("Stack is Empty!!");
+                    } else {
+                        System.out.println("Stack is not Empty!!");
+                    }
+                    break;
+                case 8:
+                    System.out.println("Exiting...");
+                    sc.close();
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice! Please try again.");
             }
-            if(holidays[i].month.equals("December")) {
-                break;
-            }
-            holidays[i].printHoliday();
-            i++;
-        } while(i < holidays.length);
-
-    }
-
-    public static boolean inSameMonth(Holiday h1, Holiday h2) {
-        if(h1.month.equals(h2.month)) {
-            return true;
-        } else {
-            return false;
         }
     }
-
-    public static Holiday[] createHolidayArray(int size) {
-        Holiday[] holidays = new Holiday[size];
-        for(int i = 0; i < size; i++) {
-            holidays[i] = new Holiday();
-        }
-        return holidays;
-    }
-
-    public static void printHolidayArray(Holiday[] holidays) {
-        int i = 0;
-        while(i<holidays.length) {
-            holidays[i].printHoliday();
-            i++;
-        }
-    }
-
 }

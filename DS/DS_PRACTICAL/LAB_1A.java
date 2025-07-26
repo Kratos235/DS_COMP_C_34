@@ -1,4 +1,4 @@
-public class LAB_1 {
+public class LAB_1A {
     public static void main(String[] args) {
         // Declarations
         byte a = 12;
